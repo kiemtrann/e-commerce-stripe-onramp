@@ -1,13 +1,14 @@
 "use client";
 
 import axios from "axios";
-import { useEffect } from "react";
+import { MouseEventHandler, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 
 import Button from "@/components/ui/button";
 import Currency from "@/components/ui/currency";
 import useCart from "@/hooks/use-cart";
 import { toast } from "react-hot-toast";
+import useCheckoutModal from "@/hooks/use-checkout-modal";
 
 const Summary = () => {
   const searchParams = useSearchParams();
@@ -29,13 +30,13 @@ const Summary = () => {
     return total + Number(item.price)
   }, 0);
 
-  const onCheckout = async () => {
-    const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
-      productIds: items.map((item) => item.id)
-    });
+  const checkoutModal = useCheckoutModal();
 
-    window.location = response.data.url;
-  }
+  const onCheckout: MouseEventHandler<HTMLButtonElement> = async (event) => {
+		event.stopPropagation();
+
+		checkoutModal.onOpen();
+	};
 
   return ( 
     <div
