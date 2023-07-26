@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://gatelink.vercel.app">
-    <img src="https://asset.cloudinary.com/dqsnc3tw8/34315a839ac86ee994c95744f6a43193" alt="GitHub Readme Tech Stack" />
+    <img src="https://res.cloudinary.com/dqsnc3tw8/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1690354617/Screen_Shot_2023-07-26_at_13.56.03_o8kifh.jpg?_s=public-apps" alt="GitHub Readme Tech Stack" />
   </a>
 </div>
 
