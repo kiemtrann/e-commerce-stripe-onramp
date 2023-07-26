@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://gatelink.vercel.app">
+  <a href="https://e-commerce-stripe-onramp-mxiw.vercel.app/">
     <img src="https://res.cloudinary.com/dqsnc3tw8/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1690354617/Screen_Shot_2023-07-26_at_13.56.03_o8kifh.jpg?_s=public-apps" alt="GitHub Readme Tech Stack" />
   </a>
 </div>
@@ -27,7 +27,12 @@
 <hr>
 
 ## 🐧 Demo
+[Admin web](https://e-commerce-stripe-onramp-cyan.vercel.app/)
+- 
+[Client web](https://e-commerce-stripe-onramp-mxiw.vercel.app/)
+-
 [Video demo](https://youtu.be/d-R5J1zZ24k)
+-
 <div align="center">
   <a href="https://youtu.be/d-R5J1zZ24k" target="_blank">
     <img alt="video-demo" src="https://res.cloudinary.com/dqsnc3tw8/image/upload/v1690366826/Screen_Shot_2023-07-26_at_17.19.21_lshpgb.png" />
