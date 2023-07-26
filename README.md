@@ -27,7 +27,12 @@
 <hr>
 
 ## 🐧 Demo
+[Admin web](https://e-commerce-stripe-onramp-cyan.vercel.app/)
+- 
+[Client web](https://e-commerce-stripe-onramp-mxiw.vercel.app/)
+-
 [Video demo](https://youtu.be/d-R5J1zZ24k)
+-
 <div align="center">
   <a href="https://youtu.be/d-R5J1zZ24k" target="_blank">
     <img alt="video-demo" src="https://b.stripecdn.com/docs-statics-srv/assets/crypto-onramp-overview.c4c0682697f2cd4c1c2769c3c5e08506.png" />
