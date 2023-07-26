@@ -30,7 +30,7 @@
 [Video demo](https://youtu.be/d-R5J1zZ24k)
 <div align="center">
   <a href="https://youtu.be/d-R5J1zZ24k" target="_blank">
-    <img alt="video-demo" src="https://res.cloudinary.com/dqsnc3tw8/image/upload/v1690366826/Screen_Shot_2023-07-26_at_17.19.21_lshpgb.png" />
+    <img alt="video-demo" src="https://b.stripecdn.com/docs-statics-srv/assets/crypto-onramp-overview.c4c0682697f2cd4c1c2769c3c5e08506.png" />
   </a>
 </div>
 
