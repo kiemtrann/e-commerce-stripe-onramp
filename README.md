@@ -39,13 +39,118 @@
 
 ## ⚡ Getting Started
 
-<a href="https://github.com/VanKiem-Tran/e-commerce-stripe-onramp/tree/main/admin#readme">
-    Admin
-</a>
+<p>Admin</p>
+### Prerequisites
+
+**Node version 14.x**
+
+### Cloning the repository
+
+```shell
+git clone https://github.com/VanKiem-Tran/e-commerce-stripe-onramp.git
+```
+
+```shell
+cd admin
+```
+
+### Install packages
+
+```shell
+npm i
+```
+
+### Setup .env file
+
+
+```js
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
+
+# This was inserted by `prisma init`:
+# Environment variables declared in this file are automatically made available to Prisma.
+# See the documentation for more detail: https://pris.ly/d/prisma-schema#accessing-environment-variables-from-the-schema
+
+# Prisma supports the native connection string format for PostgreSQL, MySQL, SQLite, SQL Server, MongoDB and CockroachDB.
+# See the documentation for all the connection string options: https://pris.ly/d/connection-strings
+
+DATABASE_URL=''
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=""
+STRIPE_API_KEY=
+FRONTEND_STORE_URL=http://localhost:3001
+STRIPE_WEBHOOK_SECRET=
+```
+
+### Connect to PlanetScale and Push Prisma
+```shell
+npx prisma generate
+npx prisma db push
+```
+
+
+### Start the app
+
+```shell
+npm run dev
+```
+
+## Available commands
+
+Running commands with npm `npm run [command]`
+
+| command         | description                              |
+| :-------------- | :--------------------------------------- |
+| `dev`           | Starts a development instance of the app |
+
 <hr>
-<a href="https://github.com/VanKiem-Tran/e-commerce-stripe-onramp/tree/main/ecommerce-store#readme">
-    E-commerce Store
-</a>
+<p>E-commerce Store</p>
+## MAKE SURE YOU HAVE ADMIN SETUP FIRST!
+### Prerequisites
+
+**Node version 14.x**
+
+### Cloning the repository
+
+```shell
+git clone https://github.com/VanKiem-Tran/e-commerce-stripe-onramp.git
+```
+
+```shell
+cd ecommerce-store
+```
+
+### Install packages
+
+```shell
+npm i
+```
+
+### Setup .env file
+
+
+```js
+NEXT_PUBLIC_API_URL=
+```
+
+
+### Start the app
+
+```shell
+npm run dev
+```
+
+## Available commands
+
+Running commands with npm `npm run [command]`
+
+| command         | description                              |
+| :-------------- | :--------------------------------------- |
+| `dev`           | Starts a development instance of the app |
+
 
 
 <hr>
