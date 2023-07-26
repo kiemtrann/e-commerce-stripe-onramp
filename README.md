@@ -27,10 +27,10 @@
 <hr>
 
 ## 🐧 Demo
-[Video demo](https://youtu.be/a1p-xpK8Oi4)
+[Video demo](https://youtu.be/d-R5J1zZ24k)
 <div align="center">
-  <a href="https://www.veed.io/view/631869d3-e7c3-425d-966d-48f73200120b?panel=share" target="_blank">
-    <img alt="video-demo" src="https://www.veed.io/view/631869d3-e7c3-425d-966d-48f73200120b?panel=share" />
+  <a href="https://youtu.be/d-R5J1zZ24k" target="_blank">
+    <img alt="video-demo" src="https://res.cloudinary.com/dqsnc3tw8/image/upload/v1690366826/Screen_Shot_2023-07-26_at_17.19.21_lshpgb.png" />
   </a>
 </div>
 
@@ -42,6 +42,7 @@
 <a href="https://github.com/VanKiem-Tran/e-commerce-stripe-onramp/tree/main/admin#readme">
     Admin
 </a>
+<hr>
 <a href="https://github.com/VanKiem-Tran/e-commerce-stripe-onramp/tree/main/ecommerce-store#readme">
     E-commerce Store
 </a>
@@ -51,17 +52,31 @@
 
 ## 👉 Features
 
- - **Sell Digital Content**: Gatelinks allows users to easily upload and sell various types of digital content, including images, videos, PDFs, and links. Content creators can set their own prices and customize the details of each listing.
+ - **User Interface (UI)**: The admin dashboard and web user will be built using Shadcn UI, providing a modern and intuitive user interface for easy navigation and management of the CMS.
 
- - **Secure Transactions**: The platform ensures secure transactions between buyers and sellers. It supports CandyPay - a low-code checkout solution, powering seamless, mobile-native, and effortless Payment infrastructure for web3 businesses, where you can get started accepting Solana payments in a few lines of code!
+ - **CMS, Admin, and API Functionality**: The admin dashboard will serve as a comprehensive solution by combining content management system (CMS), administrative tasks, and API generation capabilities in one platform.
 
- - **User Profiles**: Gatelinks provides user profiles for both content creators and buyers. Creators can showcase their portfolio and interact with potential customers, while buyers can discover new content and track their purchases.
+ - **Multi-Vendor/Store Management**: With this CMS, you can efficiently manage multiple vendors or stores within a single interface. For example, you can have separate sections for a "Shoe store," "Laptop store," and "Suit store." Each store's data will be organized individually with dedicated API routes generated automatically.
 
- - **Search and Discovery**: Users can search for specific types of content or explore various categories and tags to discover new and interesting digital products. Gatelinks offers robust search functionality to make it easy for buyers to find the content they are looking for.
+ - **Category Management**: You can create, update, and delete categories to organize your products effectively. This feature allows for easy categorization of items based on their types or attributes.
 
- - **Rating and Reviews**: Buyers can leave ratings and reviews for the purchased content, enabling creators to build a reputation and gain valuable feedback from their customers.
+ - **Product Management**: Easily handle product-related tasks such as creating new products, updating existing ones with details like name, description, price etc., as well as deleting products when necessary.
 
- - **Revenue Tracking**: Gatelinks provides comprehensive revenue tracking and reporting tools for content creators. Creators can monitor their sales, revenue, and performance metrics to gain insights into their business with Candypay dashboard.
+ - **Image Uploads & Customization**: Users can upload multiple images per product and change them whenever required to showcase different views or variants of the item.
+
+ - **Filter Creation & Integration:**: Create custom filters such as "Color" or "Size" that align with your specific product attributes. These filters can then be seamlessly integrated into the product creation form for efficient matching during search queries.
+
+ - **Comprehensive Search Functionality**: A powerful search feature allows users to explore through all categories along with their associated products' sizes/colors/billboards. The search results are presented with pagination for easy navigation.
+
+ - **Featured Products**: Highlight specific products by marking them as "featured" so that they appear on the homepage or other prominent sections of your website, increasing their visibility to potential customers.
+
+ - **Order Management**: Access and track all orders placed through the system, providing a comprehensive overview of sales and customer transactions.
+
+ - **Revenue Analytics**: Visualize revenue data through graphs and charts, enabling you to analyze sales performance over time and make informed business decisions based on this information.
+
+ - **Stripe Checkout Integration with USDC**: Seamlessly integrate with Stripe Checkout, a popular payment gateway, to enable smooth and secure online transactions for your customers. Users can easily make payments using various payment methods supported by Stripe.
+
+ - **MySQL + Prisma + PlanetScale**: Utilize MySQL as the database management system along with Prisma ORM (Object-Relational Mapping) for efficient data modeling and querying capabilities. Leverage PlanetScale's distributed SQL database platform for scalability and high availability of your data storage infrastructure.
 
 <hr>
 
@@ -69,116 +84,153 @@
 
 The project utilizes the following technologies and dependencies:
 
-- **@candypay/checkout-sdk** (version 0.1.56): **The CandyPay Checkout SDK** is the core dependency for integrating CandyPay's payment solutions into the project. It provides a set of APIs and functions for handling payments, managing transactions, and handling customer data securely.
+- **stripe/crypto** The Stripe fiat-to-crypto onramp enables individuals to securely purchase cryptocurrencies directly from your platform or Dapp at the time of checkout. The onramp is fully customizable and you can integrate it into your product or service. Stripe acts as the merchant of record for these onramp transactions and takes full liability for all fraud and disputes. Stripe also handles all regulatory requirements, know your customer (KYC) verifications, and sanctions screening. Customers have the option of saving payment methods, KYC data, and wallet information with Stripe, which makes the returning onramp experience much faster.
 
-- **@heroicons/react** (version 2.0.13): Heroicons is a set of beautiful, open-source icons designed by the Heroicons team. The @heroicons/react package provides a React component wrapper for easily incorporating these icons into the project.
+- **Next 13 (App Router)** The version 13 of Next.js, which includes the new App Router feature for client-side navigation within the application. This allows for smoother transitions between pages without full page reloads.
 
-- **@reduxjs/toolkit** (version 1.9.0): Redux Toolkit is a package that simplifies the usage of Redux by providing a set of tools and abstractions. It helps manage the global state of the application, making it easier to handle data flow and state changes.
+- **Tailwind CSS** A highly customizable CSS framework that offers utility classes for rapid UI development.
 
-- **@tailwindcss/line-clamp** (version 0.4.2): Tailwind CSS is a highly customizable CSS framework that provides a utility-first approach to styling. The @tailwindcss/line-clamp package extends Tailwind CSS with a utility class for truncating text content with an ellipsis.
+- **Prisma** An open-source database toolkit that simplifies database access with its type-safe query builder, schema migrations, and data modeling features.
 
-- **@types/react-currency-formatter** (version 1.1.4): This package provides TypeScript type definitions for the react-currency-formatter library. It ensures type safety and enables better code completion and error checking when using react-currency-formatter.
+- **TypeScript** A statically typed superset of JavaScript that helps catch errors during development and improves code maintainability.
 
-- **antd** (version 5.6.3): Ant Design is a popular UI library for React that offers a wide range of components and styles. It provides a set of customizable and reusable UI components for building modern web applications.
+- **MySQL** An open-source relational database management system used to store structured data efficiently.
 
-- **axios** (version 1.1.3): Axios is a popular HTTP client library that simplifies making HTTP requests from JavaScript. It provides an easy-to-use API for performing asynchronous requests and handling responses.
+- **@clerk/nextjs** Clerk is a user authentication and identity management solution. The "@clerk/nextjs" package provides integration with Next.js, allowing you to easily implement authentication features like login, logout, and role-based access control in your application.
 
-- **moment** (version 2.29.4): Moment.js is a widely used JavaScript library for parsing, validating, manipulating, and formatting dates and times. It provides a simple and intuitive API for working with dates and times in JavaScript.
+- **recharts** Recharts is a charting library for React that offers a wide range of customizable charts such as line charts, bar charts, pie charts, etc. It allows you to visualize data in an interactive and visually appealing way.
 
-- **next** (latest version): Next.js is a popular React framework for building server-side rendered (SSR) and statically generated (SSG) applications. It offers features like automatic code splitting, server-side rendering, and optimized performance.
-
-- **next-auth** (version 4.16.4): NextAuth is an authentication library for Next.js applications. It simplifies the process of adding authentication, including social logins and JWT authentication, to Next.js projects.
-
-- **react** (version 18.2.0): React is a widely used JavaScript library for building user interfaces. It provides a component-based approach to UI development and facilitates the creation of reusable UI elements.
-
-- **react-currency-formatter** (version 1.1.0): This library provides a React component for formatting currency values in a consistent and localized manner. It simplifies the task of displaying currency amounts with proper formatting.
-
-- **tailwindcss** (version 3.2.1): Tailwind CSS is a highly customizable CSS framework that provides a utility-first approach to styling. It allows for rapid development by composing utility classes to create the desired styles.
-
-- **typescript** (version 4.8.4): TypeScript is a superset of JavaScript that introduces static typing to the language. It enhances code quality, improves maintainability, and provides better tooling support through static type checking.
-                                                              |
-
-</details>
+- **zustand** Zustand is a state management library for React applications that offers a lightweight yet powerful alternative to Redux or MobX by leveraging hooks and functional programming concepts.
 
 <hr>
 
-## How CandyPay Checkout SDK is being used
+## How Stripe fiat-to-crypto onramp is being used
 
-In the Gatelinks website, the **CandyPay** is utilized to facilitate the payment process and enable seamless transactions for purchasing digital content.
+In the Store website, the **Stripe fiat-to-crypto onramp** is utilized to facilitate the payment process and enable seamless transactions for purchasing digital content.
 
-- Integration Setup: The **CandyPay** is included as a dependency in the project's package.json file. The specific version used is "@candypay/checkout-sdk" (version 0.1.56).
+- Install the SDK and client library..
 
-- Importing the SDK and initializing the SDK: Within the codebase, the **CandyPay** is imported using the appropriate import statement or require statement, depending on the JavaScript module system in use.
+- Generate a crypto onramp session on your backend.
+
+- Render the onramp UI on your website.
+
+- View your integration’s usage on the Stripe Dashboard.
+
+1. Install the SDK and client library
 
 ```sh
-import { CandyPay } from "@candypay/checkout-sdk";
-
-export const candypay = new CandyPay({
-	api_keys: {
-		public_api_key: process.env.CANDYPAY_PUBLIC_API_KEY,
-		private_api_key: process.env.CANDYPAY_PRIVATE_API_KEY,
-	},
-	network: 'devnet', // use 'mainnet' for prod and 'devnet' for dev environment
-	config: {
-		collect_shipping_address: false,
-	},
-});
+npm install --save @stripe/stripe-js @stripe/crypto
 ```
 
-- Creating a Payment: When a buyer selects an item for purchase on Gatelinks, the CandyPay Checkout SDK is used to create a payment object. This payment object includes details such as the item being purchased, the price, and any additional metadata.
+2. Generate a crypto onramp session
 
 ```sh
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { items } = req.body;
-  
-	try {
-		const response = await candypay.session.create({
-			success_url: `${process.env.STATIC_URL}/success`,
-			cancel_url: `${process.env.STATIC_URL}/cancel`,
-			tokens: ['dust', 'samo', 'shdw'],
-			items: [
-				{
-					name: item.title,
-					price: item.price,
-					image: item.image,
-					quantity: item.quantity,
-					size: item.size,
-				},
-			],
-			shipping_fees: item.shipping_fees,
-			metadata: {
-				customer_name: 'Kiem Tran',
-			},
-		});
+curl -X POST https://api.stripe.com/v1/crypto/onramp_sessions \
+  -u sk_test_51NXOHdARfU5KPLlVvSdDo9Y0zQXLkfS1vMj3AhYNU8A22W7rprb5YJTCDNfgaQeAl58yzZ8mMa3eBUD3EEWpdZiC00LD2YWcQA:
+  # this secret key is from step 1
+```
 
-		return res.status(200).json(response);
-	} catch (error) {
-		console.log(error);
-		return res.status(500).json({
-			error: 'Error creating session',
-		});
-	}
+3. Render the Onramp UI
+
+```sh
+# App.jsx
+import {loadStripeOnramp} from '@stripe/crypto';
+
+import {CryptoElements, OnrampElement} from './StripeCryptoElements';
+
+const stripeOnrampPromise = loadStripeOnramp("pk_test_51NXOHdARfU5KPLlVkKLfC8cLyGoElI4ruwGVRhpKLb49CYPRicAYBj1fPT6VFlQHK8US7tYKhxYqKdErqdY6iNFA00jHYWcJhr");
+
+export default () => {
+  // IMPORTANT: replace with your logic of how to mint/retrieve client secret
+  const clientSecret = "cos_1Lb6vsAY1pjOSNXVWF3nUtkV_secret_8fuPvTzBaxj3XRh14C6tqvdl600rpW7hG4G";
+
+  return (
+    <CryptoElements stripeOnramp={stripeOnrampPromise}>
+      <OnrampElement clientSecret={clientSecret} />
+    </CryptoElements>
+  );
+}
+# StripeCryptoElements.jsx
+import React, { ReactNode } from 'react';
+
+// ReactContext to simplify access of StripeOnramp object
+const CryptoElementsContext = React.createContext(null);
+
+export const CryptoElements = ({
+  stripeOnramp,
+  children,
+}) => {
+  const [ctx, setContext] = React.useState(() => ({ onramp: null }));
+
+  React.useEffect(() => {
+    let isMounted = true;
+
+    Promise.resolve(stripeOnramp).then((onramp) => {
+      if (onramp && isMounted) {
+        setContext((ctx) => (ctx.onramp ? ctx : { onramp }));
+      }
+    });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [stripeOnramp]);
+
+  return (
+    <CryptoElementsContext.Provider value={ctx}>
+      {children}
+    </CryptoElementsContext.Provider>
+  );
 };
 
+// React hook to get StripeOnramp from context
+export const useStripeOnramp = () => {
+  const context = React.useContext(CryptoElementsContext);
+  return context?.onramp;
+};
+
+// React element to render Onramp UI
+export const OnrampElement = ({
+  clientSecret,
+  appearance,
+  ...props
+}) => {
+  const stripeOnramp = useStripeOnramp();
+  const onrampElementRef = React.useRef(null);
+
+  React.useEffect(() => {
+    const containerRef = onrampElementRef.current;
+    if (containerRef) {
+      containerRef.innerHTML = '';
+
+      if (clientSecret && stripeOnramp) {
+        stripeOnramp
+          .createSession({
+            clientSecret,
+            appearance,
+          })
+          .mount(containerRef)
+      }
+    }
+  }, [clientSecret, stripeOnramp]);
+
+  return <div {...props} ref={onrampElementRef}></div>;
+};
 ```
 
-- Initiating the Checkout: After the payment object is created, the CandyPay Checkout SDK is invoked to initiate the checkout process. This typically involves displaying a checkout form or redirecting the user to a payment page hosted by CandyPay.
-<div align="center">
-  <a href="https://gatelink.vercel.app">
-    <img src="https://res.cloudinary.com/drh6sa2x5/image/upload/v1688121454/Screen_Shot_2023-06-30_at_17.36.19_vzbwpc.png" alt="GitHub Readme Tech Stack" />
-  </a>
-</div>
+After running the script, the onramp renders the following:
 
-- Handling Payment Events: During the checkout process, the CandyPay Checkout SDK emits various events to track the progress and outcome of the payment. These events can be captured and handled within the Gatelinks website to update the user interface, trigger appropriate actions, or display relevant messages.
+ <img src="https://b.stripecdn.com/docs-statics-srv/assets/crypto-onramp-integrate-result.39ac3fbc71204497b33e2c0c849e823f.png" alt="demo" />
 
-By incorporating the CandyPay, Gatelinks leverages its features and functionality to enable secure and efficient payment processing for the sale of digital content on the platform. This ensures a seamless and reliable purchasing experience for buyers and content creators alike.
+ 4. View your integration's usage on the Stripe Dashboard
 
+After you’ve launched the Crypto Onramp, you can view customized usage reports in the Stripe Dashboard.
 
 <hr>
 
 ## 🧑‍🤝‍🧑 Contribution 
 
-Contributions to Gatelinks are welcome!
+Contributions to repository are welcome!
 
 If you would like to contribute to the project, please follow these steps:
 
@@ -202,14 +254,12 @@ Additionally, write clear commit messages and provide a detailed description in 
 
 ## ©️ License 
 
-The Gatelinks project is licensed under the MIT License. You are free to use, modify, and distribute the codebase in accordance with the terms and conditions of the license.
+The e-commerce project is licensed under the MIT License. You are free to use, modify, and distribute the codebase in accordance with the terms and conditions of the license.
 
 <hr>
 
 ## ☎️ Contact  
 
-If you have any questions, suggestions, or feedback regarding Gatelinks, feel free to contact us at `kiemtran.dev@gmail.com`. I appreciate your interest in the project and will get back to you as soon as possible.
+If you have any questions, suggestions, or feedback regarding E-Commerce that Accepts USDC, feel free to contact us at `kiemtran.dev@gmail.com`. I appreciate your interest in the project and will get back to you as soon as possible.
 
-For more information, please visit the official [Gatelinks website ](https://gatelink.vercel.app).
-
-Thank you for your interest in Gatelinks. I hope you find the platform useful for selling and monetizing your digital content. Happy selling!
+Thank you for your interest in E-Commerce that Accepts USDC. I hope you find the platform useful for selling and monetizing your digital content. Happy selling!
