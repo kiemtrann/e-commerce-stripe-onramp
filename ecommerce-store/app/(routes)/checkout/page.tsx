@@ -26,8 +26,8 @@ const CheckoutPage = () => {
 			body: JSON.stringify({
 				transaction_details: {
 					destination_currency: 'usdc',
-					destination_exchange_amount: '13.37',
-					destination_network: 'ethereum',
+					destination_exchange_amount: '11.37',
+					destination_network: 'solana',
 				},
 			}),
 		})
