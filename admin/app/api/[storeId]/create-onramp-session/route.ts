@@ -28,19 +28,57 @@ export async function POST(
 ) {
 	const { transaction_details } = await req.json();
 
-	// Create an OnrampSession with the order amount and currency
-	const onrampSession = (await new OnrampSessionResource(stripe).create({
-		transaction_details: {
-			destination_currency: transaction_details['destination_currency'],
-			destination_exchange_amount:
-				transaction_details['destination_exchane_amount'],
-			destination_network: transaction_details['destination_network'],
-		},
-		customer_ip_address: '8.8.8.8',
-	})) as any;
+	let clientSecret = '';
+
+	const apiKey =
+		'sk_test_51NXOHdARfU5KPLlVvSdDo9Y0zQXLkfS1vMj3AhYNU8A22W7rprb5YJTCDNfgaQeAl58yzZ8mMa3eBUD3EEWpdZiC00LD2YWcQA';
+	const url = 'https://api.stripe.com/v1/crypto/onramp_sessions';
+
+	const requestData = new URLSearchParams();
+	requestData.append('customer_ip_address', '8.8.8.8');
+	requestData.append(
+		'wallet_addresses[solana]',
+		'bufoH37MTiMTNAfBS4VEZ94dCEwMsmeSijD2vZRShuV'
+	);
+	requestData.append('destination_networks[]', 'solana');
+	requestData.append('destination_currencies[]', 'usdc');
+	requestData.append('destination_network', 'solana');
+	requestData.append('destination_currency', 'usdc');
+	requestData.append('destination_amount', '10');
+	requestData.append(
+		'wallet_addresses[ethereum]',
+		'0xB00F0759DbeeF5E543Cc3E3B07A6442F5f3928a2'
+	);
+	requestData.append('destination_networks[]', 'ethereum');
+	requestData.append('destination_currencies[]', 'usdc');
+	requestData.append('destination_network', 'ethereum');
+	requestData.append('destination_currency', 'usdc');
+	requestData.append('destination_amount', '10');
+
+	const headers = {
+		Authorization: `Basic ${Buffer.from(apiKey + ':').toString('base64')}`,
+		'Content-Type': 'application/x-www-form-urlencoded',
+	};
+
+	const requestOptions = {
+		method: 'POST',
+		headers: headers,
+		body: requestData,
+	};
+
+	await fetch(url, requestOptions)
+		.then((response) => response.json())
+		.then((data) => {
+			clientSecret = data.client_secret;
+		})
+		.catch((error) => {
+			console.error('Error creating onramp session:', error);
+		});
 
 	return NextResponse.json(
-		{ clientSecret: onrampSession.client_secret },
+		{
+			clientSecret: clientSecret,
+		},
 		{
 			headers: corsHeaders,
 		}
