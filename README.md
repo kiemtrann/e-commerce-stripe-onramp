@@ -41,7 +41,7 @@
   </a>
 </div>
 
-![Alt Text](https://res.cloudinary.com/drh6sa2x5/video/upload/q_auto,c_pad,b_auto:predominant/v1692774951/Screen_Recording_2023-08-23_at_14.06.05_or7e4x.jpg?_s=public-apps)
+![Alt Text](https://res.cloudinary.com/drh6sa2x5/video/upload/q_auto,c_pad,b_auto:predominant/v1692774951/Screen_Recording_2023-08-23_at_14.06.05_or7e4x.jpg?_s=public-apps](https://res.cloudinary.com/drh6sa2x5/image/upload/v1692775226/ezgif.com-video-to-gif_z2ofvp.gif))
 
 <hr>
 
