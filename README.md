@@ -35,13 +35,14 @@
 -
 ![Alt Text](https://res.cloudinary.com/drh6sa2x5/image/upload/v1692380400/Screencast_from_19-08-2023_00_34_25_zouo7e.gif)
 
+
 <div align="center">
   <a href="https://youtu.be/d-R5J1zZ24k" target="_blank">
     <img alt="video-demo" src="https://b.stripecdn.com/docs-statics-srv/assets/crypto-onramp-overview.c4c0682697f2cd4c1c2769c3c5e08506.png" />
   </a>
 </div>
 
-![Alt Text](https://res.cloudinary.com/drh6sa2x5/video/upload/q_auto,c_pad,b_auto:predominant/v1692774951/Screen_Recording_2023-08-23_at_14.06.05_or7e4x.jpg?_s=public-apps](https://res.cloudinary.com/drh6sa2x5/image/upload/v1692775226/ezgif.com-video-to-gif_z2ofvp.gif))
+![Alt Text](https://res.cloudinary.com/drh6sa2x5/image/upload/v1692775226/ezgif.com-video-to-gif_z2ofvp.gif)
 
 <hr>
 
