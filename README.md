@@ -27,9 +27,9 @@
 <hr>
 
 ## 🐧 Demo
-[Admin web]([https://e-commerce-stripe-admin.vercel.app/](https://e-commerce-stripe-onramp-admin.vercel.app/))
+[Admin web](https://e-commerce-stripe-onramp-admin.vercel.app/)
 - 
-[Client web]([https://e-commerce-stripe-client.vercel.app/](https://e-commerce-stripe-onramp-client.vercel.app/category/7d90de6a-bcf2-4cad-87a1-873124efa9a6))
+[Client web](https://e-commerce-stripe-onramp-client.vercel.app/category/7d90de6a-bcf2-4cad-87a1-873124efa9a6)
 -
 [Video demo](https://youtu.be/d-R5J1zZ24k)
 -
