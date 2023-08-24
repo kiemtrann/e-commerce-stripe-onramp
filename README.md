@@ -31,16 +31,9 @@
 - 
 [Client web](https://e-commerce-stripe-onramp-client.vercel.app/category/7d90de6a-bcf2-4cad-87a1-873124efa9a6)
 -
-[Video demo](https://youtu.be/d-R5J1zZ24k)
+[Video demo](https://www.veed.io/embed/0afad1d8-0bc1-4ccb-bd4d-cc849897f806)
 -
 ![Alt Text](https://res.cloudinary.com/drh6sa2x5/image/upload/v1692380400/Screencast_from_19-08-2023_00_34_25_zouo7e.gif)
-
-
-<div align="center">
-  <a href="https://youtu.be/d-R5J1zZ24k" target="_blank">
-    <img alt="video-demo" src="https://b.stripecdn.com/docs-statics-srv/assets/crypto-onramp-overview.c4c0682697f2cd4c1c2769c3c5e08506.png" />
-  </a>
-</div>
 
 ![Alt Text](https://res.cloudinary.com/drh6sa2x5/image/upload/v1692775226/ezgif.com-video-to-gif_z2ofvp.gif)
 
