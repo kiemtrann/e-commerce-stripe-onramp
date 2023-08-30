@@ -487,7 +487,7 @@ After running the script, the onramp renders the following:
 
  ![Alt Text](https://res.cloudinary.com/drh6sa2x5/image/upload/v1692775226/ezgif.com-video-to-gif_z2ofvp.gif)
 
-5. View your integration's usage on the ![Stripe Dashboard](https://stripe.com/docs/crypto)
+5. View your integration's usage on the Stripe Dashboard: https://stripe.com/docs/crypto
 
 After you’ve launched the Crypto Onramp, you can view customized usage reports in the Stripe Dashboard.
 
