@@ -466,6 +466,31 @@ export async function POST(
 }
 ```
 
+=> Example config USDC 
+
+```
+	const requestData = new URLSearchParams();
+	requestData.append('customer_ip_address', '8.8.8.8');
+	requestData.append(
+		'wallet_addresses[solana]',
+		'bufoH37MTiMTNAfBS4VEZ94dCEwMsmeSijD2vZRShuV'
+	);
+	requestData.append('destination_networks[]', 'solana');
+	requestData.append('destination_currencies[]', 'usdc');
+	requestData.append('destination_network', 'solana');
+	requestData.append('destination_currency', 'usdc');
+	requestData.append('destination_amount', '10');
+	requestData.append(
+		'wallet_addresses[ethereum]',
+		'0xB00F0759DbeeF5E543Cc3E3B07A6442F5f3928a2'
+	);
+	requestData.append('destination_networks[]', 'ethereum');
+	requestData.append('destination_currencies[]', 'usdc');
+	requestData.append('destination_network', 'ethereum');
+	requestData.append('destination_currency', 'usdc');
+	requestData.append('destination_amount', '10');
+```
+
 After running the script, the onramp renders the following:
 
  ![Alt Text](https://res.cloudinary.com/drh6sa2x5/image/upload/v1692775226/ezgif.com-video-to-gif_z2ofvp.gif)
