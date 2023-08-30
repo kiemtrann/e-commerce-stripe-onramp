@@ -237,99 +237,240 @@ curl -X POST https://api.stripe.com/v1/crypto/onramp_sessions \
   # this secret key is from step 1
 ```
 
-3. Render the Onramp UI
+3. Create checkout modal Store
 
 ```sh
-# App.jsx
-import {loadStripeOnramp} from '@stripe/crypto';
+# checkout-modal.tsx
+'use client';
 
-import {CryptoElements, OnrampElement} from './StripeCryptoElements';
+import Modal from '@/components/ui/modal';
+import React, { useState, useEffect } from 'react';
+import { loadStripeOnramp } from '@stripe/crypto';
 
-const stripeOnrampPromise = loadStripeOnramp("pk_test_51NXOHdARfU5KPLlVkKLfC8cLyGoElI4ruwGVRhpKLb49CYPRicAYBj1fPT6VFlQHK8US7tYKhxYqKdErqdY6iNFA00jHYWcJhr");
+import {
+	CryptoElements,
+	OnrampElement,
+} from './StripeCryptoElements';
+import useCheckoutModal from '@/hooks/use-checkout-modal';
 
-export default () => {
-  // IMPORTANT: replace with your logic of how to mint/retrieve client secret
-  const clientSecret = "cos_1Lb6vsAY1pjOSNXVWF3nUtkV_secret_8fuPvTzBaxj3XRh14C6tqvdl600rpW7hG4G";
+const stripeOnrampPromise = loadStripeOnramp(
+	'YOUR_PRIVATE_KEY'
+);
 
-  return (
-    <CryptoElements stripeOnramp={stripeOnrampPromise}>
-      <OnrampElement clientSecret={clientSecret} />
-    </CryptoElements>
-  );
-}
-# StripeCryptoElements.jsx
-import React, { ReactNode } from 'react';
+
+const CheckoutModal = () => {
+	const checkoutwModal = useCheckoutModal();
+	const [clientSecret, setClientSecret] = useState('');
+	const [message, setMessage] = useState('');
+
+	useEffect(() => {
+		// Fetches an onramp session and captures the client secret
+		fetch(`${process.env.NEXT_PUBLIC_API_URL}/create-onramp-session`, {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				transaction_details: {
+					destination_currency: 'usdc',
+					destination_exchange_amount: '13.37',
+					destination_network: 'ethereum',
+				},
+			}),
+		})
+			.then((res) => res.json())
+			.then((data) => setClientSecret(data.clientSecret));
+	}, []);
+
+	const onChange = React.useCallback(({ session }: any) => {
+		setMessage(`OnrampSession is now in ${session.status} state.`);
+	}, []);
+
+	return (
+		<Modal open={checkoutwModal.isOpen} onClose={checkoutwModal.onClose}>
+			<div className='flex flex-col justify-center items-center'>
+				<CryptoElements stripeOnramp={stripeOnrampPromise}>
+					{clientSecret && (
+						<OnrampElement
+							id="onramp-element"
+							clientSecret={clientSecret}
+							appearance={{ theme: 'light' }}
+							onChange={onChange}
+							className="w-[28vw] m-4"
+						/>
+					)}
+				</CryptoElements>
+				{message && <div id="onramp-message">{message}</div>}
+			</div>
+		</Modal>
+	);
+};
+
+export default CheckoutModal;
+
+```
+
+4. Create Stripe Crypto Elements
+```
+import React from 'react';
 
 // ReactContext to simplify access of StripeOnramp object
 const CryptoElementsContext = React.createContext(null);
+CryptoElementsContext.displayName = 'CryptoElementsContext';
 
-export const CryptoElements = ({
-  stripeOnramp,
-  children,
-}) => {
-  const [ctx, setContext] = React.useState(() => ({ onramp: null }));
+export const CryptoElements = ({ stripeOnramp, children }: any) => {
+	const [ctx, setContext] = React.useState(() => ({
+		onramp: null,
+	}));
 
-  React.useEffect(() => {
-    let isMounted = true;
+	React.useEffect(() => {
+		let isMounted = true;
 
-    Promise.resolve(stripeOnramp).then((onramp) => {
-      if (onramp && isMounted) {
-        setContext((ctx) => (ctx.onramp ? ctx : { onramp }));
-      }
-    });
+		Promise.resolve(stripeOnramp).then((onramp) => {
+			if (onramp && isMounted) {
+				setContext((ctx) => (ctx.onramp ? ctx : { onramp }));
+			}
+		});
 
-    return () => {
-      isMounted = false;
-    };
-  }, [stripeOnramp]);
+		return () => {
+			isMounted = false;
+		};
+	}, [stripeOnramp]);
 
-  return (
-    <CryptoElementsContext.Provider value={ctx}>
-      {children}
-    </CryptoElementsContext.Provider>
-  );
+	return (
+		<CryptoElementsContext.Provider value={ctx as any}>
+			{children}
+		</CryptoElementsContext.Provider>
+	);
 };
 
-// React hook to get StripeOnramp from context
 export const useStripeOnramp = () => {
-  const context = React.useContext(CryptoElementsContext);
-  return context?.onramp;
+	const context = React.useContext(CryptoElementsContext) as any;
+	return context?.onramp;
 };
 
-// React element to render Onramp UI
+const useOnrampSessionListener = (type: any, session: any, callback: any) => {
+	React.useEffect(() => {
+		if (session && callback) {
+			const listener = (e: { payload: any; }) => callback(e.payload);
+			session.addEventListener(type, listener);
+			return () => {
+				session.removeEventListener(type, listener);
+			};
+		}
+		return () => {};
+	}, [session, callback, type]);
+};
+
 export const OnrampElement = ({
-  clientSecret,
-  appearance,
-  ...props
-}) => {
-  const stripeOnramp = useStripeOnramp();
-  const onrampElementRef = React.useRef(null);
+	clientSecret,
+	appearance,
+	onReady,
+	onChange,
+	...props
+}: any) => {
+	const stripeOnramp = useStripeOnramp();
+	const onrampElementRef = React.useRef(null);
+	const [session, setSession] = React.useState();
 
-  React.useEffect(() => {
-    const containerRef = onrampElementRef.current;
-    if (containerRef) {
-      containerRef.innerHTML = '';
+	const appearanceJSON = JSON.stringify(appearance);
+	React.useEffect(() => {
+		const containerRef = onrampElementRef.current as any;
+		if (containerRef) {
+			containerRef.innerHTML = '';
 
-      if (clientSecret && stripeOnramp) {
-        stripeOnramp
-          .createSession({
-            clientSecret,
-            appearance,
-          })
-          .mount(containerRef)
-      }
-    }
-  }, [clientSecret, stripeOnramp]);
+			if (clientSecret && stripeOnramp) {
+				setSession(
+					stripeOnramp
+						.createSession({
+							clientSecret,
+							appearance: appearanceJSON ? JSON.parse(appearanceJSON) : {},
+						})
+						.mount(containerRef)
+				);
+			}
+		}
+	}, [appearanceJSON, clientSecret, stripeOnramp]);
 
-  return <div {...props} ref={onrampElementRef}></div>;
+	useOnrampSessionListener('onramp_ui_loaded', session, onReady);
+	useOnrampSessionListener('onramp_session_updated', session, onChange);
+
+	return <div {...props} ref={onrampElementRef}></div>;
 };
+```
+
+5. Create Onramp Session on Admin
+```
+import Stripe from 'stripe';
+import { NextResponse } from 'next/server';
+
+const corsHeaders = {
+	'Access-Control-Allow-Origin': '*',
+	'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+	'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+};
+
+const OnrampSessionResource = Stripe.StripeResource.extend({
+	create: Stripe.StripeResource.method({
+		method: 'POST',
+		path: 'crypto/onramp_sessions',
+	}),
+});
+
+const stripe = new Stripe('YOUR_SECRECT_KEY', {
+  apiVersion: "2022-11-15"
+});
+
+export async function OPTIONS() {
+	return NextResponse.json({}, { headers: corsHeaders });
+}
+
+export async function POST(
+	req: Request,
+	{ params }: { params: { storeId: string } }
+) {
+	const { transaction_details } = await req.json();
+
+	let clientSecret = '';
+
+	const apiKey =
+		'YOUR_API_KEY';
+	const url = 'https://api.stripe.com/v1/crypto/onramp_sessions';
+
+	const headers = {
+		Authorization: `Basic ${Buffer.from(apiKey + ':').toString('base64')}`,
+		'Content-Type': 'application/x-www-form-urlencoded',
+	};
+
+	const requestOptions = {
+		method: 'POST',
+		headers: headers,
+		body: requestData,
+	};
+
+	await fetch(url, requestOptions)
+		.then((response) => response.json())
+		.then((data) => {
+			clientSecret = data.client_secret;
+		})
+		.catch((error) => {
+			console.error('Error creating onramp session:', error);
+		});
+
+	return NextResponse.json(
+		{
+			clientSecret: clientSecret,
+		},
+		{
+			headers: corsHeaders,
+		}
+	);
+}
 ```
 
 After running the script, the onramp renders the following:
 
- <img src="https://b.stripecdn.com/docs-statics-srv/assets/crypto-onramp-integrate-result.39ac3fbc71204497b33e2c0c849e823f.png" alt="demo" />
+ ![Alt Text](https://res.cloudinary.com/drh6sa2x5/image/upload/v1692775226/ezgif.com-video-to-gif_z2ofvp.gif)
 
- 4. View your integration's usage on the Stripe Dashboard
+6. View your integration's usage on the ![Stripe Dashboard](https://stripe.com/docs/crypto)
 
 After you’ve launched the Crypto Onramp, you can view customized usage reports in the Stripe Dashboard.
 
