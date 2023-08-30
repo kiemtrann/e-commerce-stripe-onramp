@@ -229,15 +229,7 @@ In the Store website, the **Stripe fiat-to-crypto onramp** is utilized to facili
 npm install --save @stripe/stripe-js @stripe/crypto
 ```
 
-2. Generate a crypto onramp session
-
-```sh
-curl -X POST https://api.stripe.com/v1/crypto/onramp_sessions \
-  -u sk_test_51NXOHdARfU5KPLlVvSdDo9Y0zQXLkfS1vMj3AhYNU8A22W7rprb5YJTCDNfgaQeAl58yzZ8mMa3eBUD3EEWpdZiC00LD2YWcQA:
-  # this secret key is from step 1
-```
-
-3. Create checkout modal Store
+2. Create checkout modal Store
 
 ```sh
 # checkout-modal.tsx
@@ -308,7 +300,7 @@ export default CheckoutModal;
 
 ```
 
-4. Create Stripe Crypto Elements
+3. Create Stripe Crypto Elements
 ```
 import React from 'react';
 
@@ -397,7 +389,7 @@ export const OnrampElement = ({
 };
 ```
 
-5. Create Onramp Session on Admin
+4. Create Onramp Session on Admin
 ```
 import Stripe from 'stripe';
 import { NextResponse } from 'next/server';
@@ -495,7 +487,7 @@ After running the script, the onramp renders the following:
 
  ![Alt Text](https://res.cloudinary.com/drh6sa2x5/image/upload/v1692775226/ezgif.com-video-to-gif_z2ofvp.gif)
 
-6. View your integration's usage on the ![Stripe Dashboard](https://stripe.com/docs/crypto)
+5. View your integration's usage on the ![Stripe Dashboard](https://stripe.com/docs/crypto)
 
 After you’ve launched the Crypto Onramp, you can view customized usage reports in the Stripe Dashboard.
 
